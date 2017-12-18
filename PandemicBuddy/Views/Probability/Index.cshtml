@@ -1,0 +1,132 @@
+﻿@model PandemicBuddy.Models.Probability.ProbabilityHomeViewModel
+
+<div class="jumbotron">
+    <h1>Pandemic Buddy</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <h4>Infection Rate</h4>
+    </div>
+    <div class="col-md-4">
+        @Html.EditorFor(x => x.InfectionRate, new { @class = "NumInput", @id="infectionRate"})
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <h4>Total Deck Size</h4>
+    </div>
+    <div class="col-md-4" id="totalDeckSize">
+        @Html.DisplayFor(x => x.TotalDeckSize, new { @class = ""})
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <h4>Total Known Cards</h4>
+    </div>
+    <div class="col-md-4" id="totalKnownCards">
+        @Html.DisplayFor(x => x.TotalKnownCards, new { @class = "" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <h4>Known Cards Left</h4>
+    </div>
+    <div class="col-md-4"  id = "knownCardsLeft" >
+        @Html.DisplayFor(x => x.KnownCardsLeft, new { @class = ""})
+    </div>
+</div>
+
+<div class="row">
+    <div class="Rtable Rtable--5cols">
+        <div class="Rtable-cell"><h4>Cities</h4></div>
+        <div class="Rtable-cell"><h4>Total Possible # of City Cards</h4></div>
+        <div class="Rtable-cell"><h4>Total Seen This Game</h4></div>
+        <div class="Rtable-cell"><h4># Seen This Epidemic</h4></div>
+        <div class="Rtable-cell"><h4>Chances of Pulling at Least 1(%)</h4></div>
+
+        @for (var i = 0; i < Model.NumRows; i++)
+        {
+            <div class="Rtable-cell"><input type="text" class="TableCityName" id="city_@i" placeholder="City Name" /></div> //city
+            <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numCardsForCity_@i" placeholder="Eg: 3" /></div> // total cards in deck
+            <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numSoFar_@i" placeholder="Eg: 2" /></div> //total seen so far
+            <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numThisEpidemic_@i" placeholder="Eg: 1"/></div> // this epidemic
+            <div class="Rtable-cell"><div class="TableValue" id="chance_@i"> 0% </div></div> // % chance
+        }
+
+    </div>
+</div>
+<input type="hidden" id="numRows" value="@Model.NumRows"/>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Probability/probability.js"></script>
+
+
+<style type="text/css">
+    .TableCityName {
+        max-width: 200px
+    }
+    .TableNumInput {
+        width: 60px
+    }
+    .NumInput {
+        width: 60px
+    }
+        /* Tables
+    ================================== */
+        .Rtable {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin: 0 0 3em 0;
+            padding: 0;
+        }
+
+        .Rtable-cell {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            width: 100%;
+            padding: 0.8em 1.2em;
+            overflow: hidden;
+            list-style: none;
+            border: solid 3px white;
+            background: rgba(112, 128, 144, 0.2);
+        }
+
+            .Rtable-cell > h1,
+            .Rtable-cell > h2,
+            .Rtable-cell > h3,
+            .Rtable-cell > h4,
+            .Rtable-cell > h5,
+            .Rtable-cell > h6 {
+                margin: 0;
+            }
+        /* Table column sizing
+    ================================== */
+        .Rtable--2cols > .Rtable-cell {
+            width: 50%;
+        }
+
+        .Rtable--3cols > .Rtable-cell {
+            width: 33.33%;
+        }
+
+        .Rtable--4cols > .Rtable-cell {
+            width: 25%;
+        }
+
+        .Rtable--5cols > .Rtable-cell {
+            width: 20%;
+        }
+
+        .Rtable--6cols > .Rtable-cell {
+            width: 16.6%;
+        }
+</style>

@@ -1,0 +1,36 @@
+﻿@model PandemicBuddy.Models.Home.HomeViewModel
+<div class="jumbotron">
+    <h1>Pandemic Buddy</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <ol>
+            <li>Type in the number of Cities in your Grid</li>
+            <li>Click Generate</li>
+            <li>Start filling in the known fields</li>
+        </ol>
+    </div>
+    <div class="col-md-4">
+        <h4>Number of Cities in Grid</h4>
+        <p>
+            Type in the number of Cities in your Grid
+        </p>
+
+        @using (Html.BeginForm("Index", "Probability"))
+        {
+            <div>@Html.TextBoxFor(x => x.NumCities, new { type = "number" , @size="4"})</div>
+            <div><input type="submit" name="command" value="Generate" class="btn" /></div>
+        }
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
+        {
+            @Html.DisplayFor(x=>x.StatusMessage)
+        }
+    </div>
+</div>
