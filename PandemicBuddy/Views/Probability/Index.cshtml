@@ -52,7 +52,13 @@
             <div class="Rtable-cell"><input type="text" class="TableCityName" id="city_@i" placeholder="City Name" /></div> //city
             <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numCardsForCity_@i" placeholder="Eg: 3" /></div> // total cards in deck
             <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numSoFar_@i" placeholder="Eg: 2" /></div> //total seen so far
-            <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numThisEpidemic_@i" placeholder="Eg: 1"/></div> // this epidemic
+            <div class="Rtable-cell">
+                <input type="number" class="TableNumInput" id="numThisEpidemic_@i" placeholder="Eg: 1"/>
+                @*<div>
+                    <input type="button" id="upSeen_@i" class="Btn-UpDownNum" value="+" />
+                    <input type="button" id="dnSeen_@i" class="Btn-UpDownNum" value="-" />
+                </div>*@
+            </div> // this epidemic
             <div class="Rtable-cell"><div class="TableValue" id="chance_@i"> 0% </div></div> // % chance
         }
 
@@ -74,17 +80,29 @@
     .NumInput {
         width: 60px
     }
-        /* Tables
+
+    /* Buttons */
+    .Btn-UpDownNum {
+        background-color: #4CAF50;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    /* Tables
     ================================== */
-        .Rtable {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin: 0 0 3em 0;
-            padding: 0;
-        }
+    .Rtable {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 0 3em 0;
+        padding: 0;
+    }
 
         .Rtable-cell {
             -webkit-box-sizing: border-box;
@@ -93,7 +111,7 @@
             -ms-flex-positive: 1;
             flex-grow: 1;
             width: 100%;
-            padding: 0.8em 1.2em;
+            padding: 0.8em 0.8em;
             overflow: hidden;
             list-style: none;
             border: solid 3px white;
