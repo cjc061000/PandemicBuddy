@@ -51,13 +51,19 @@
         {
             <div class="Rtable-cell"><input type="text" class="TableCityName" id="city_@i" placeholder="City Name" /></div> //city
             <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numCardsForCity_@i" placeholder="Eg: 3" /></div> // total cards in deck
-            <div class="Rtable-cell"><input type="number" class="TableNumInput" id="numSoFar_@i" placeholder="Eg: 2" /></div> //total seen so far
+            <div class="Rtable-cell">
+                <input type="number" class="TableNumInput" id="numSoFar_@i" placeholder="Eg: 2" />
+                <div class="Btn-UpDn-Container">
+                    <input type="button" id="upSoFar_@i" class="Btn-UpDownNum" value="+" />
+                    <input type="button" id="dnSoFar_@i" class="Btn-UpDownNum" value="-" />
+                </div>
+            </div> //total seen so far
             <div class="Rtable-cell">
                 <input type="number" class="TableNumInput" id="numThisEpidemic_@i" placeholder="Eg: 1"/>
-                @*<div>
+                <div class="Btn-UpDn-Container">
                     <input type="button" id="upSeen_@i" class="Btn-UpDownNum" value="+" />
                     <input type="button" id="dnSeen_@i" class="Btn-UpDownNum" value="-" />
-                </div>*@
+                </div>
             </div> // this epidemic
             <div class="Rtable-cell"><div class="TableValue" id="chance_@i"> 0% </div></div> // % chance
         }
@@ -71,6 +77,10 @@
 
 
 <style type="text/css">
+    .Btn-UpDn-Container{
+        display:inline
+    }
+    
     .TableCityName {
         max-width: 200px
     }
