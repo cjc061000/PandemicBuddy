@@ -80,7 +80,7 @@ $(document).ready(function () {
         $("#dnSeen_" + i).click(function () {
             handleButtonClick(this, "#numThisEpidemic_", false)
         });
-
+        //testing
         //Total seen this game so far
         $("#upSoFar_" + i).click(function () {
             handleButtonClick(this, "#numSoFar_", true)
